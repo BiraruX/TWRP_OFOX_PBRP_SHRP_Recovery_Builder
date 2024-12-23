@@ -116,9 +116,12 @@ jobs:
       run: |
         echo "BUILD_DATE=$(TZ=UTC date +%Y%m%d)" >> $GITHUB_ENV
 
-    - name: LS
-      run: |
-        ls -a
+    - name: List Directory Structure
+      uses: jaywcjlove/github-action-folder-tree@main
+      with:
+          path: ${{ env.OUTPUT_DIR }}
+          depth: 2
+          exclude: "node_modules|dist|.git|.husky"
 
     - name: Check if the recovery exists # It makes the recovery.img and renames it to Orangefox*.img but the OG should also work
       if: always()
