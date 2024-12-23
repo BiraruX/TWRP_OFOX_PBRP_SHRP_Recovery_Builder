@@ -119,7 +119,7 @@ jobs:
     - name: List Directory Structure
       uses: jaywcjlove/github-action-folder-tree@main
       with:
-          path: ${GITHUB_WORKSPACE}
+          path: ${{ github.workspace }}
           exclude: "node_modules|dist|.git|.husky"
 
     - name: Check if the recovery exists # It makes the recovery.img and renames it to Orangefox*.img but the OG should also work
