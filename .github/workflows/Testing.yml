@@ -1,0 +1,21 @@
+name: Testing
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build OFRP by ${{ github.actor }}
+    runs-on: ubuntu-20.04
+
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: List Directory Structure
+      uses: jaywcjlove/github-action-folder-tree@main
+      with:
+          path: ${{ github.workspace }}
+          exclude: "node_modules|dist|.git|.husky"
